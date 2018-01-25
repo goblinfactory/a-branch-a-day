@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GcHandleTests\GCHandleNormalTests.cs" />
+    <Compile Include="GcHandleTests\GCHandlePinnedTests.cs" />
+    <Compile Include="GcHandleTests\GCHandleWeakTests.cs" />
+    <Compile Include="GcHandleTests\WeakTrackResurrectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
