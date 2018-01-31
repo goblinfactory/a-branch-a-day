@@ -15,13 +15,20 @@ namespace Tests
         private const int ITERATIONS = 100;
 
         [Test]
-        public void TestDictionaryVsList_Add()
+        public void TestDictionaryVsList_Add_CollectionsOfClasses()
         {
             var tb = new ListVsDictionaryWithClassesTestBox();
-
-            var tester = new TestBoxTester(tb, ITERATIONS, "DICT", "LIST", "Add", "ClassThing", 100, 1000, 100_000, 1000_000);
+            var tester = new TestBoxTester(tb, ITERATIONS, "DICT", "LIST", "Add", "ClassThing", 100, 1000, 100_000, 1000_000, 3000_000);
             tester.TestAvsB_SomeMethod_ReturnRatio();
-
         }
+
+        [Test]
+        public void TestDictionaryVsList_Add_CollectionOfStructs()
+        {
+            var tb = new ListVsDictionaryWithStructsTestBox();
+            var tester = new TestBoxTester(tb, ITERATIONS, "DICT", "LIST", "Add", "StructThing", 100, 1000, 100_000, 1000_000, 3000_000);
+            tester.TestAvsB_SomeMethod_ReturnRatio();
+        }
+
     }
 }

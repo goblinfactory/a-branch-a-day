@@ -4,9 +4,11 @@ using Tests.CollectionTests.Internal;
 
 namespace Tests.CollectionTests
 {
+
     public class ListVsDictionaryWithClassesTestBox : TestBoxBase
     {
         private int _itemsLoaded;
+
         private List<ThingClass> _list = new List<ThingClass>();
         private Dictionary<int, ThingClass> _dict = new Dictionary<int, ThingClass>();
 

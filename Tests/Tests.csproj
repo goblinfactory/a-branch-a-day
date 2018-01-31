@@ -48,7 +48,8 @@
   <ItemGroup>
     <Compile Include="CollectionTests\Internal\MethodAMethodBTester.cs" />
     <Compile Include="CollectionTests\ListVsDictionaryTests.cs" />
-    <Compile Include="CollectionTests\ListVsDictionaryWithClassesTestBoxBase.cs" />
+    <Compile Include="CollectionTests\ListVsDictionaryWithStructsTestBox.cs" />
+    <Compile Include="CollectionTests\ListVsDictionaryWithClassesTestBox.cs" />
     <Compile Include="CollectionTests\Internal\TestBoxBase.cs" />
     <Compile Include="CollectionTests\Internal\ThingClass.cs" />
     <Compile Include="CollectionTests\Internal\ThingStruct.cs" />

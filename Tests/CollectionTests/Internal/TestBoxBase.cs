@@ -24,7 +24,7 @@ namespace Tests.CollectionTests.Internal
         /// <summary>
         /// override this comparer if needed.
         /// </summary>
-        protected static Func<decimal, Result> _comparer = r => r > 0.8M && r < 1.2M ? Result.Similar : r < 0.8M ? Result.Faster : Result.Slower;
+        protected static Func<decimal, Result> _comparer = r => r > 0.5M && r < 2M ? Result.Similar : r < 0.5M ? Result.Faster : Result.Slower;
 
         protected abstract void LoadCollectionsWithTestData(int cntItems);
         public abstract void DoCommandA();
