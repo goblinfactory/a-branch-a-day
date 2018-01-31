@@ -10,21 +10,16 @@ Simple sandbox project for testing assumptions about collection performances.
 
 ### Test results
 
-**`TestDictionaryVsList_Add_ReturnRatio()`**
+**`TestDictionaryVsList_Add()`**
 
 ```
-Testing .Add() on large collections of classes.
+Units are ticks per 100 invocations.
+Testing DICT.Add() vs LIST.Add() on small and large collections of ClassThing.
 
-coll size | LIST     | DICT     | L/D     | D/L       
-------------------------------------------------------
-small collections
-100       |1602.00   |102.00    |15.71     |0.06      
-1000      |58.00     |17.00     |3.41      |0.29      
-
-large collections
-100000    |12.00     |29.00     |0.41      |2.42      
-1000000   |11.00     |27.00     |0.41      |2.45      
-
-small collections dictionary is faster
-large collections List is faster
-Units are ticks per 100 invocations.```
+coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+----------------------------------------------------------------
+100       |15.00     |26.00     |0.58      |1.73      |Faster
+1000      |89.00     |28.00     |3.18      |0.31      |Slower
+100000    |23.00     |35.00     |0.66      |1.52      |Faster
+1000000   |20.00     |36.00     |0.56      |1.80      |Faster
+```
