@@ -16,191 +16,189 @@ Simple sandbox project for testing assumptions about collection performances.
 
 
 Mostly similar, but occasionally both List or Dictionary will be faster, maybe due to GC or fecking windows updates?
+When the list size is around 1000 elements then list performance is around 2 to 3 times slower than dictionary. See the bottom of the test output. Test up to 90% percentile across a small sample.
 
 running batch 1
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |16.00     |27.00     |0.59      |1.69      |Similar
-1000      |67.00     |24.00     |2.79      |0.36      |Similar
-100000    |44.00     |52.00     |0.85      |1.18      |Similar
-500000    |20.00     |35.00     |0.57      |1.75      |Similar
+100       |10.00     |19.00     |0.53      |1.90      |Similar
+1000      |81.00     |18.00     |4.50      |0.22      |Slower
+100000    |28.00     |22.00     |1.27      |0.79      |Similar
+500000    |12.00     |159.00    |0.08      |13.25     |Faster
 
 running batch 2
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |13.00     |24.00     |0.54      |1.85      |Similar
-1000      |64.00     |27.00     |2.37      |0.42      |Similar
-100000    |18.00     |38.00     |0.47      |2.11      |Similar
-500000    |40.00     |29.00     |1.38      |0.73      |Similar
+100       |8.00      |18.00     |0.44      |2.25      |Faster
+1000      |135.00    |29.00     |4.66      |0.21      |Slower
+100000    |14.00     |147.00    |0.10      |10.50     |Faster
+500000    |19.00     |250.00    |0.08      |13.16     |Faster
 
 running batch 3
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |14.00     |43.00     |0.33      |3.07      |Faster
-1000      |110.00    |30.00     |3.67      |0.27      |Slower
-100000    |16.00     |33.00     |0.48      |2.06      |Similar
-500000    |17.00     |28.00     |0.61      |1.65      |Similar
+100       |12.00     |28.00     |0.43      |2.33      |Faster
+1000      |61.00     |20.00     |3.05      |0.33      |Slower
+100000    |12.00     |49.00     |0.24      |4.08      |Faster
+500000    |14.00     |43.00     |0.33      |3.07      |Faster
 
 running batch 4
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |15.00     |28.00     |0.54      |1.87      |Similar
-1000      |130.00    |48.00     |2.71      |0.37      |Similar
-100000    |29.00     |58.00     |0.50      |2.00      |Similar
-500000    |18.00     |28.00     |0.64      |1.56      |Similar
+100       |8.00      |19.00     |0.42      |2.37      |Faster
+1000      |87.00     |33.00     |2.64      |0.38      |Slower
+100000    |14.00     |47.00     |0.30      |3.36      |Faster
+500000    |12.00     |51.00     |0.24      |4.25      |Faster
 
 running batch 5
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |14.00     |30.00     |0.47      |2.14      |Similar
-1000      |67.00     |23.00     |2.91      |0.34      |Similar
-100000    |26.00     |56.00     |0.46      |2.15      |Similar
-500000    |16.00     |27.00     |0.59      |1.69      |Similar
+100       |9.00      |20.00     |0.45      |2.22      |Faster
+1000      |96.00     |19.00     |5.05      |0.20      |Slower
+100000    |14.00     |25.00     |0.56      |1.79      |Similar
+500000    |22.00     |56.00     |0.39      |2.55      |Faster
 
 running batch 6
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |15.00     |23.00     |0.65      |1.53      |Similar
-1000      |62.00     |30.00     |2.07      |0.48      |Similar
-100000    |17.00     |26.00     |0.65      |1.53      |Similar
-500000    |26.00     |34.00     |0.76      |1.31      |Similar
+100       |13.00     |31.00     |0.42      |2.38      |Faster
+1000      |155.00    |31.00     |5.00      |0.20      |Slower
+100000    |18.00     |27.00     |0.67      |1.50      |Similar
+500000    |16.00     |67.00     |0.24      |4.19      |Faster
 
 running batch 7
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |14.00     |23.00     |0.61      |1.64      |Similar
-1000      |67.00     |27.00     |2.48      |0.40      |Similar
-100000    |28.00     |53.00     |0.53      |1.89      |Similar
-500000    |20.00     |50.00     |0.40      |2.50      |Similar
+100       |8.00      |18.00     |0.44      |2.25      |Faster
+1000      |158.00    |34.00     |4.65      |0.22      |Slower
+100000    |12.00     |25.00     |0.48      |2.08      |Faster
+500000    |17.00     |30.00     |0.57      |1.76      |Similar
 
 running batch 8
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |21.00     |36.00     |0.58      |1.71      |Similar
-1000      |63.00     |29.00     |2.17      |0.46      |Similar
-100000    |26.00     |43.00     |0.60      |1.65      |Similar
-500000    |28.00     |54.00     |0.52      |1.93      |Similar
+100       |13.00     |25.00     |0.52      |1.92      |Similar
+1000      |80.00     |32.00     |2.50      |0.40      |Slower
+100000    |15.00     |35.00     |0.43      |2.33      |Faster
+500000    |12.00     |22.00     |0.55      |1.83      |Similar
 
 running batch 9
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |23.00     |40.00     |0.58      |1.74      |Similar
-1000      |75.00     |26.00     |2.88      |0.35      |Similar
-100000    |84.00     |32.00     |2.62      |0.38      |Similar
-500000    |16.00     |29.00     |0.55      |1.81      |Similar
+100       |7.00      |18.00     |0.39      |2.57      |Faster
+1000      |25.00     |18.00     |1.39      |0.72      |Similar
+100000    |18.00     |53.00     |0.34      |2.94      |Faster
+500000    |12.00     |56.00     |0.21      |4.67      |Faster
 
 running batch 10
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |14.00     |30.00     |0.47      |2.14      |Similar
-1000      |84.00     |25.00     |3.36      |0.30      |Slower
-100000    |28.00     |64.00     |0.44      |2.29      |Similar
-500000    |40.00     |48.00     |0.83      |1.20      |Similar
+100       |8.00      |19.00     |0.42      |2.37      |Faster
+1000      |54.00     |22.00     |2.45      |0.41      |Slower
+100000    |11.00     |65.00     |0.17      |5.91      |Faster
+500000    |12.00     |256.00    |0.05      |21.33     |Faster
 
 running batch 11
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |13.00     |26.00     |0.50      |2.00      |Similar
-1000      |62.00     |29.00     |2.14      |0.47      |Similar
-100000    |20.00     |54.00     |0.37      |2.70      |Similar
-500000    |17.00     |29.00     |0.59      |1.71      |Similar
+100       |8.00      |20.00     |0.40      |2.50      |Faster
+1000      |67.00     |20.00     |3.35      |0.30      |Slower
+100000    |11.00     |24.00     |0.46      |2.18      |Faster
+500000    |13.00     |35.00     |0.37      |2.69      |Faster
 
 running batch 12
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |15.00     |23.00     |0.65      |1.53      |Similar
-1000      |63.00     |28.00     |2.25      |0.44      |Similar
-100000    |16.00     |41.00     |0.39      |2.56      |Similar
-500000    |30.00     |65.00     |0.46      |2.17      |Similar
+100       |12.00     |30.00     |0.40      |2.50      |Faster
+1000      |28.00     |20.00     |1.40      |0.71      |Similar
+100000    |14.00     |36.00     |0.39      |2.57      |Faster
+500000    |17.00     |40.00     |0.43      |2.35      |Faster
 
 running batch 13
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |23.00     |41.00     |0.56      |1.78      |Similar
-1000      |97.00     |37.00     |2.62      |0.38      |Similar
-100000    |32.00     |48.00     |0.67      |1.50      |Similar
-500000    |19.00     |40.00     |0.48      |2.11      |Similar
+100       |13.00     |30.00     |0.43      |2.31      |Faster
+1000      |73.00     |20.00     |3.65      |0.27      |Slower
+100000    |12.00     |36.00     |0.33      |3.00      |Faster
+500000    |17.00     |53.00     |0.32      |3.12      |Faster
 
 running batch 14
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |14.00     |24.00     |0.58      |1.71      |Similar
-1000      |64.00     |40.00     |1.60      |0.63      |Similar
-100000    |42.00     |98.00     |0.43      |2.33      |Similar
-500000    |91.00     |113.00    |0.81      |1.24      |Similar
+100       |21.00     |55.00     |0.38      |2.62      |Faster
+1000      |92.00     |37.00     |2.49      |0.40      |Slower
+100000    |11.00     |38.00     |0.29      |3.45      |Faster
+500000    |14.00     |22.00     |0.64      |1.57      |Similar
 
 running batch 15
 Units are ticks per 100 invocations.
-Testing DICT.Add() vs LIST.Add() on small and large collections of Person.
+Testing List.Add() vs Dictionary.Add() on small and large collections of Person.
 
-coll size |DICT      |LIST      | D/L     | L/D      | DICT.Add() is
+coll size |List      |Dictionary| L/D     | D/L      | List.Add() is
 ----------------------------------------------------------------
-100       |18.00     |33.00     |0.55      |1.83      |Similar
-1000      |6713.00   |55.00     |122.05    |0.01      |Slower
-100000    |26.00     |65.00     |0.40      |2.50      |Similar
-500000    |27.00     |28.00     |0.96      |1.04      |Similar
+100       |8.00      |18.00     |0.44      |2.25      |Faster
+1000      |25.00     |19.00     |1.32      |0.76      |Similar
+100000    |10.00     |35.00     |0.29      |3.50      |Faster
+500000    |24.00     |58.00     |0.41      |2.42      |Faster
 
-Asserting that up to the 90th percentile are all similar
-
-Observe that consistently when the list size is around 1000 elements, that List performance around 2 to 3 times faster than dictionary.
- 1000, Similar, 2.79      
- 1000, Similar, 2.37      
- 1000, Slower, 3.67      
- 1000, Similar, 2.71      
- 1000, Similar, 2.91      
- 1000, Similar, 2.07      
- 1000, Similar, 2.48      
- 1000, Similar, 2.17      
- 1000, Similar, 2.88      
- 1000, Slower, 3.36      
- 1000, Similar, 2.14      
- 1000, Similar, 2.25      
- 1000, Similar, 2.62      
- 1000, Similar, 1.60      
- 1000, Slower, 122.05    
-
-
+Observe that consistently when the list size is around 1000 elements, that List performance around 2 to 3 times slower than dictionary.
+ 1000, Slower, 4.50      
+ 1000, Slower, 4.66      
+ 1000, Slower, 3.05      
+ 1000, Slower, 2.64      
+ 1000, Slower, 5.05      
+ 1000, Slower, 5.00      
+ 1000, Slower, 4.65      
+ 1000, Slower, 2.50      
+ 1000, Similar, 1.39      
+ 1000, Slower, 2.45      
+ 1000, Slower, 3.35      
+ 1000, Similar, 1.40      
+ 1000, Slower, 3.65      
+ 1000, Slower, 2.49      
+ 1000, Similar, 1.32      
+Asserting that up to the 90th percentile are all Slower
 
 ```

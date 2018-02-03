@@ -14,6 +14,9 @@ namespace Tests.CollectionTests
 
         private static readonly Person TestPerson = new Person("foo", 1.234F, new DateTime(2000, 1, 1));
 
+        public override string CollectionATypeis => "List";
+        public override string CollectionBTypeis => "Dictionary";
+
         protected override void LoadCollectionsWithTestData(int items)
         {
             _itemsLoaded = items;

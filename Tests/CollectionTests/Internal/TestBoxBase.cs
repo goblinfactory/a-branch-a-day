@@ -7,8 +7,11 @@ namespace Tests.CollectionTests.Internal
     {
         public readonly Func<decimal, Result> Comparer;
 
-        private const decimal MAX = 3M;
+        private const decimal MAX = 2M;
         private const decimal MIN = 1/MAX;
+
+        public abstract string CollectionATypeis { get; }
+        public abstract string CollectionBTypeis { get; }
 
         protected TestBoxBase() : this(_comparer) {}
 

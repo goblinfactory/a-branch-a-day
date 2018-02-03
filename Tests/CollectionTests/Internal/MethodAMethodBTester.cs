@@ -19,12 +19,12 @@ namespace Tests.CollectionTests.Internal
         private readonly string collectionof;
         private int[] _collectionSizes;
 
-        public TestBoxTester(TestBoxBase testbox, int iterations, string A, string B, string someMethod, string collectionof, params int[] collectionSizes)
+        public TestBoxTester(TestBoxBase testbox, int iterations, string someMethod, string collectionof, params int[] collectionSizes)
         {
             _testbox = testbox;
             _iterations = iterations;
-            this.A = A;
-            this.B = B;
+            this.A = testbox.CollectionATypeis;
+            this.B = testbox.CollectionBTypeis;
             this.someMethod = someMethod;
             this.collectionof = collectionof;
             _collectionSizes = collectionSizes;
