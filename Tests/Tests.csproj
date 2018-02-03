@@ -47,12 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionTests\Internal\MethodAMethodBTester.cs" />
+    <Compile Include="CollectionTests\Internal\Result.cs" />
+    <Compile Include="CollectionTests\Internal\TestResult.cs" />
     <Compile Include="CollectionTests\ListVsDictionaryTests.cs" />
-    <Compile Include="CollectionTests\ListVsDictionaryWithStructsTestBox.cs" />
-    <Compile Include="CollectionTests\ListVsDictionaryWithClassesTestBox.cs" />
+    <Compile Include="CollectionTests\ListVsDictionaryTestBox.cs" />
     <Compile Include="CollectionTests\Internal\TestBoxBase.cs" />
-    <Compile Include="CollectionTests\Internal\ThingClass.cs" />
-    <Compile Include="CollectionTests\Internal\ThingStruct.cs" />
+    <Compile Include="CollectionTests\Internal\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

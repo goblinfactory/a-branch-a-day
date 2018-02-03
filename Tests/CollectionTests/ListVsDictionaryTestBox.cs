@@ -9,10 +9,10 @@ namespace Tests.CollectionTests
     {
         private int _itemsLoaded;
 
-        private List<ThingClass> _list = new List<ThingClass>();
-        private Dictionary<int, ThingClass> _dict = new Dictionary<int, ThingClass>();
+        private List<Person> _list = new List<Person>();
+        private Dictionary<int, Person> _dict = new Dictionary<int, Person>();
 
-        private static readonly ThingClass TestThingClass = new ThingClass("foo", 1.234F, new DateTime(2000, 1, 1));
+        private static readonly Person TestPerson = new Person("foo", 1.234F, new DateTime(2000, 1, 1));
 
         protected override void LoadCollectionsWithTestData(int items)
         {
@@ -21,7 +21,7 @@ namespace Tests.CollectionTests
             // load
             for (int i = 0; i < items; i++)
             {
-                var t = new ThingClass("text", i * 0.01F, d);
+                var t = new Person("text", i * 0.01F, d);
                 _list.Add(t);
                 _dict.Add(i, t);
             }
@@ -36,14 +36,14 @@ namespace Tests.CollectionTests
 
         public override void DoCommandA()
         {
-            _list.Add(TestThingClass);
+            _list.Add(TestPerson);
         }
 
         private static int _id;
 
         public override void DoCommandB()
         {
-            _dict.Add(++_id + _itemsLoaded, TestThingClass);    
+            _dict.Add(++_id + _itemsLoaded, TestPerson);    
         }
     }
 }

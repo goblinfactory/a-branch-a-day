@@ -30,7 +30,7 @@ namespace Tests.CollectionTests.Internal
             _collectionSizes = collectionSizes;
         }
 
-        public decimal[]  TestAvsB_SomeMethod_ReturnRatio()
+        public TestResult[]  TestAvsB_SomeMethod_ReturnRatio()
         {
             Console.WriteLine($"Units are ticks per {_iterations} invocations.");
             Console.WriteLine($"Testing {A}.{someMethod}() vs {B}.{someMethod}() on small and large collections of {collectionof}.");
@@ -41,22 +41,28 @@ namespace Tests.CollectionTests.Internal
             // warm up the system and throw away this first test result
             var r0 = TestAvsB_Action_ReturnRatio(_testbox, _collectionSizes[0], _iterations, false);
 
-            var ratios = new List<decimal>();
+            var results = new List<TestResult>();
             foreach (var size in _collectionSizes)
             {
                 var ratio = TestAvsB_Action_ReturnRatio(_testbox, size, _iterations);
-                ratios.Add(ratio);
+                results.Add(ratio);
             }
-            return ratios.ToArray();
+            return results.ToArray();
         }
 
-        private decimal TestAvsB_Action_ReturnRatio(TestBoxBase tb, int items, int iterations, bool print = true)
+        private TestResult TestAvsB_Action_ReturnRatio(TestBoxBase tb, int items, int iterations, bool print = true)
         {
             tb.StartTest(items);
             var stopwatchA = TimeHowLongXIterationsTake(tb, iterations, b => b.DoCommandA());
             var stopwatchB = TimeHowLongXIterationsTake(tb, iterations, b => b.DoCommandB());
-            if (print) PrintDifference(stopwatchA, stopwatchB, items);
-            return (decimal)stopwatchA.ElapsedTicks / (decimal)stopwatchB.ElapsedTicks;
+
+            decimal t1 = (decimal)stopwatchA.ElapsedTicks + ITSY_BIT;
+            var t2 = (decimal)stopwatchB.ElapsedTicks + ITSY_BIT;
+            var ratioAB = t1 / t2;
+            var result = _testbox.Comparer(ratioAB);
+
+            if (print) PrintDifference(result,t1, t2, items);
+            return new TestResult(items, ratioAB, result);
         }
 
         private Stopwatch TimeHowLongXIterationsTake(TestBoxBase tb, int iterations, Action<TestBoxBase> action)
@@ -71,12 +77,8 @@ namespace Tests.CollectionTests.Internal
             return stopwatch;
         }
 
-        private void PrintDifference(Stopwatch sw1, Stopwatch sw2, long items)
+        private void PrintDifference(Result result, decimal t1, decimal t2, long items)
         {
-            decimal t1 = (decimal)sw1.ElapsedTicks + ITSY_BIT;
-            var t2 = (decimal)sw2.ElapsedTicks + ITSY_BIT;
-            var ratioAB = t1 / t2;
-            var result = _testbox.Comparer(ratioAB);
             Console.WriteLine($"{items,-10}|{t1,-10:0.00}|{t2,-10:0.00}|{t1 / t2,-10:0.00}|{t2 / t1,-10:0.00}|{result}");
         }
 
